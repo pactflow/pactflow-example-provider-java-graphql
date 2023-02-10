@@ -1,0 +1,13 @@
+public class GraphQLQuery implements GraphQLQueryResolver {
+
+  private BookRepository repository;
+
+  public GraphQLQuery(BookRepository repository) {
+      this.repository = repository;
+  }
+
+  public List<Book> allBooks() {
+      return repository.getAllBooks();
+  }
+
+}

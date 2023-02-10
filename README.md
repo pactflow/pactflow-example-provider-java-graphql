@@ -63,3 +63,19 @@ You can simulate a CI process with the following command:
 ```
 make fake_ci
 ```
+
+## Graphiql 
+
+Once you start the app (`./gradlew bootRun`) you can view the Graphiql interface and interact with the GraphQL server at http://localhost:8080/graphiql
+
+
+Example query:
+```gql
+{
+  product(id: 1) {
+    id
+    name
+    type
+  }
+}
+```
