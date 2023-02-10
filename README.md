@@ -2,11 +2,11 @@
 
 ![Build](https://github.com/pactflow/example-provider-springboot/workflows/Build/badge.svg)
 
-[![Can I deploy Status](https://test.pactflow.io/pacticipants/pactflow-example-provider-springboot/branches/master/latest-version/can-i-deploy/to-environment/production/badge.svg)](https://test.pactflow.io/overview/provider/pactflow-example-provider-springboot/consumer/pactflow-example-consumer-java-junit)
+[![Can I deploy Status](https://test.pactflow.io/pacticipants/pactflow-example-provider-java-graphql/branches/main/latest-version/can-i-deploy/to-environment/production/badge.svg)](https://test.pactflow.io/overview/provider/pactflow-example-provider-java-graphql/consumer/pactflow-example-consumer-java-junit)
 
-[![Pact Status](https://test.pactflow.io/pacts/provider/pactflow-example-provider-springboot/consumer/pactflow-example-consumer-java-junit/latest/badge.svg)](https://test.pactflow.io/pacts/provider/pactflow-example-provider-springboot/consumer/pactflow-example-consumer-java-junit/latest) (latest pact)
+[![Pact Status](https://test.pactflow.io/pacts/provider/pactflow-example-provider-java-graphql/consumer/pactflow-example-consumer-java-junit/latest/badge.svg)](https://test.pactflow.io/pacts/provider/pactflow-example-provider-java-graphql/consumer/pactflow-example-consumer-java-junit/latest) (latest pact)
 
-[![Pact Status](https://test.pactflow.io/pacts/provider/pactflow-example-provider-springboot/consumer/pactflow-example-consumer-java-junit/latest/prod/badge.svg)](https://test.pactflow.io/pacts/provider/pactflow-example-provider-springboot/consumer/pactflow-example-consumer-java-junit/latest/prod) (prod/prod pact)
+[![Pact Status](https://test.pactflow.io/pacts/provider/pactflow-example-provider-java-graphql/consumer/pactflow-example-consumer-java-junit/latest/prod/badge.svg)](https://test.pactflow.io/pacts/provider/pactflow-example-provider-java-graphql/consumer/pactflow-example-consumer-java-junit/latest/prod) (prod/prod pact)
 
 
 This is an example of a Java Spring Boot GraphQL provider that uses Pact, [PactFlow](https://pactflow.io) and GitHub Actions to ensure that it is compatible with the expectations its consumers have of it.
@@ -23,7 +23,7 @@ The project uses a Makefile to simulate a very simple build pipeline with two st
   - Run tests (including the pact tests that generate the contract)
   - Publish pacts, tagging the consumer version with the name of the current branch
   - Check if we are safe to deploy to prod (ie. has the pact content been successfully verified)
-- Deploy (only from master)
+- Deploy (only from main)
   - Deploy app (just pretend for the purposes of this example!)
   - Tag the deployed consumer version as 'prod'
 
@@ -32,7 +32,8 @@ The project uses a Makefile to simulate a very simple build pipeline with two st
 - Docker
 - A [PactFlow](https://pactflow.io) account
 - A [read/write API Token](https://docs.pactflow.io/#configuring-your-api-token) from your PactFlow account
-- Java 8+ installed
+- Java 19+ installed
+- A linux based environment (e.g. MacOSX, Linux, Windows Subsystem for Linux)
 
 ## Usage
 

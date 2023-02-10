@@ -3,8 +3,8 @@ WEBHOOK_UUID := "9GS-Z8nSAbUzvJW4xmhdsg"
 PACT_CHANGED_WEBHOOK_UUID := "c76b601e-d66a-4eb1-88a4-6ebc50c0df8b"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli"
 
-# Only deploy from master
-ifeq ($(GIT_BRANCH),master)
+# Only deploy from main
+ifeq ($(GIT_BRANCH),main)
 	DEPLOY_TARGET=deploy
 else
 	DEPLOY_TARGET=no_deploy
@@ -43,7 +43,7 @@ fake_ci_webhook:
 ## =====================
 
 test: .env
-	./gradlew clean test -i
+	GIT_BRANCH=`git rev-parse --abbrev-ref HEAD` ./gradlew clean test -i
 
 ## =====================
 ## Deploy tasks
@@ -52,7 +52,7 @@ test: .env
 deploy: can_i_deploy deploy_app record_deployment
 
 no_deploy:
-	@echo "Not deploying as not on master branch"
+	@echo "Not deploying as not on main branch"
 
 can_i_deploy: .env
 	@"${PACT_CLI}" broker can-i-deploy --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --to-environment production
@@ -101,4 +101,4 @@ test_pact_changed_webhook:
 
 schema-test:
 	# @./node_modules/.bin/swagger-mock-validator ./oas/swagger.yml ../example-consumer-cypress/pacts/example-cypress-consumer-pactflow-example-provider.json
-	./node_modules/.bin/swagger-mock-validator --user dXfltyFMgNOFZAxr8io9wJ37iUpY42M:O5AIZWxelWbLvqMd8PkAVycBJh2Psyg1 --tag master --provider pactflow-example-provider ./oas/swagger.yml https://test.pactflow.io
+	./node_modules/.bin/swagger-mock-validator --user dXfltyFMgNOFZAxr8io9wJ37iUpY42M:O5AIZWxelWbLvqMd8PkAVycBJh2Psyg1 --tag main --provider pactflow-example-provider ./oas/swagger.yml https://test.pactflow.io
