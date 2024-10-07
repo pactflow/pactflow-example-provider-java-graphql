@@ -44,7 +44,6 @@ fake_ci_webhook:
 
 test: .env
 	GIT_BRANCH=`git rev-parse --abbrev-ref HEAD` ./gradlew clean test -i
-
 ## =====================
 ## Deploy tasks
 ## =====================
